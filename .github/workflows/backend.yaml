@@ -43,9 +43,9 @@ jobs:
       - name: Pull and test image
         run: |
           docker pull ghcr.io/wiwichips/hell0-ka8te-backend:${{ github.sha }}
-          docker run -d -p 8000:8000 ghcr.io/wiwichips/hell0-ka8te-backend:${{ github.sha }}
+          docker run -d -p 8080:8080 ghcr.io/wiwichips/hell0-ka8te-backend:${{ github.sha }}
           sleep 10
-          curl localhost:8000/api/status
+          curl localhost:8080/api/status
           exit $?
       - name: Get current date
         id: date
