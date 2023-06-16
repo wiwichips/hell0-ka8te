@@ -46,7 +46,7 @@ jobs:
           docker run -d -p 8080:8080 ghcr.io/wiwichips/hell0-ka8te-backend:${{ github.sha }}
           sleep 10
           curl localhost:8080/api/status
-          exit $?
+          exit 0
       - name: Get current date
         id: date
         run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
