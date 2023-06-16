@@ -61,7 +61,7 @@ jobs:
           tags: ghcr.io/wiwichips/hell0-ka8te-frontend:${{ steps.date.outputs.date }}
       - uses: actions/delete-package-versions@v4
         with:
-          package-name: k8s-toyapp-frontend
+          package-name: hell0-ka8te-frontend
           package-type: container
           min-versions-to-keep: 6
 
