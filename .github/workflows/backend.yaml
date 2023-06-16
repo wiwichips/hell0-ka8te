@@ -42,8 +42,8 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: Pull and test image
         run: |
-          docker pull ghcr.io/wiwichips/hell0-ka8te-frontend:${{ github.sha }}
-          docker run -d -p 8000:8000 ghcr.io/wiwichips/hell0-ka8te-frontend:${{ github.sha }}
+          docker pull ghcr.io/wiwichips/hell0-ka8te-backend:${{ github.sha }}
+          docker run -d -p 8000:8000 ghcr.io/wiwichips/hell0-ka8te-backend:${{ github.sha }}
           sleep 10
           curl localhost:8000/api/status
           exit $?
@@ -52,11 +52,11 @@ jobs:
         run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
       - uses: docker/build-push-action@v2
         with:
-          context: ./frontend
-          file: ./frontend/Dockerfile
+          context: ./backend
+          file: ./backend/Dockerfile
           platforms: linux/arm64,linux/amd64
           push: true
-          tags: ghcr.io/wiwichips/hell0-ka8te-frontend:${{ steps.date.outputs.date }}
+          tags: ghcr.io/wiwichips/hell0-ka8te-backend:${{ steps.date.outputs.date }}
       - uses: actions/delete-package-versions@v4
                                                                                                        
 
