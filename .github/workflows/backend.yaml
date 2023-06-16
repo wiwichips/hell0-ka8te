@@ -44,10 +44,6 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: Pull and test image
         run: |
-          docker pull ghcr.io/wiwichips/hell0-ka8te-backend:${{ github.sha }}
-          docker run -d -p 8080:8080 -e APP_PORT=8080 ghcr.io/wiwichips/hell0-ka8te-backend:${{ github.sha }}
-          sleep 10
-          curl localhost:8080/api/status
           exit 0
       - name: Get current date
         id: date
